@@ -1,3 +1,15 @@
+.movie-card {
+  border: solid 2px white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.movie-card:hover {
+  cursor: pointer;
+}
+
 .movie-card > img {
   width: 200px;
 }

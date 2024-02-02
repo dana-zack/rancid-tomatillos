@@ -1,23 +1,20 @@
-const url = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
-
-// function getMovies() {
-//   return fetch(url)
-//     .then(response => {
-//       if (!response.ok) {
-//         throw new Error('Sorry pal, try again later!')
-//       }
-//       return response.json();
-//     })
-// }
-
-async function getMovies() {
-    const response = await fetch(url)
+async function fetchMovies() {
+    const response = await fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     if(!response.ok) {
       throw new Error('Sorry, try again in a moment.')
     }
     return await response.json();
 }
 
+async function fetchSingleMovie(id) {
+  const response = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+  if(!response.ok) {
+    throw new Error('Sorry, try again in a moment.')
+  }
+  return await response.json();
+}
+
 export {
-  getMovies
+  fetchMovies,
+  fetchSingleMovie
 }
