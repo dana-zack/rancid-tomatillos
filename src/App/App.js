@@ -1,12 +1,33 @@
-import { useState, useEffect } from 'react';
-import movieData from './App-mock-data';
 import './App.css';
+import { useState, useEffect } from 'react';
+import { getMovies } from '../apiCalls.js'
 import Movies from '../Movies/Movies.js'
 
 function App() {
-  const [movies, setMovies] = useState(movieData.movies);
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState('')
+  
+  // useEffect(() => {
+  //   getMovies()
+  //     .then(movieData => {
+  //       setMovies(movieData.movies)
+  //     })
+  //     .catch(error => {
+  //       setError(error)
+  //     })
+  // }, [])
 
-  // console.log(movies)
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const movieData = await getMovies();
+        setMovies(movieData.movies);
+      } catch (error) {
+        setError(error)
+      }
+    }
+    getData();
+  }, [])
   
   return (
     <main className="App">
