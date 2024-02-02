@@ -1,0 +1,9 @@
+.home-button {
+  margin: 0 0 20px;
+  width: 100px;
+  border: none; 
+}
+
+.home-button:hover {
+  cursor: pointer;
+}

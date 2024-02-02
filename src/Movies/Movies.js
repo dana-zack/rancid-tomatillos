@@ -1,7 +1,7 @@
 import MovieCard from '../MovieCard/MovieCard'
 import './Movies.css'
 
-function Movies({ movies }){
+function Movies({ movies, selectMovie }){
 
   const movieCards = movies.map(movie => {
     return (
@@ -12,6 +12,7 @@ function Movies({ movies }){
         releaseDate={movie.release_date}
         id={movie.id}
         key={movie.id}
+        selectMovie={selectMovie}
       />
     )
   })
