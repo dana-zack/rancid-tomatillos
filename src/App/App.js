@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { getMovies } from '../apiCalls.js'
+import { fetchMovies, fetchSingleMovie } from '../apiCalls.js'
 import Movies from '../Movies/Movies.js'
 import MovieDetails from '../MovieDetails/MovieDetails.js'
 
@@ -10,20 +10,27 @@ function App() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const getData = async () => {
+    const getMovies = async () => {
       try {
-        const movieData = await getMovies();
+        const movieData = await fetchMovies();
         setMovies(movieData.movies);
       } catch (error) {
         setError(error)
       }
     }
-    getData();
+    getMovies();
   }, [])
 
   function selectMovie(id) {
-    const selectedMovie = movies.find(movie => movie.id === id)
-    setSelectedMovie(selectedMovie)
+    const getSingleMovie = async () => {
+      try {
+        const selectedMovie = await fetchSingleMovie(id);
+        setSelectedMovie(selectedMovie.movie);
+      } catch (error) {
+        setError(error)
+      }
+    }
+    getSingleMovie();    
   }
   
   return (
@@ -33,7 +40,7 @@ function App() {
       { error && <p>Sorry, come back later!</p> }
       { 
       selectedMovie ? 
-      <MovieDetails selectedMovie={selectedMovie} /> : 
+      <MovieDetails selectedMovie={ selectedMovie } /> : 
       <Movies movies={movies} selectMovie={ selectMovie }/> 
       }
       

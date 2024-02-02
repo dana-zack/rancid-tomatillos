@@ -11,11 +11,14 @@ function MovieDetails({selectedMovie}) {
       <img src={selectedMovie.poster_path} alt="movie backdrop"></img>
       <p>{selectedMovie.average_rating}</p>
       <p>{selectedMovie.release_date}</p>
-      <p>Here is a beautifully written synopsis for a mediocre film.</p> 
+      <p>{selectedMovie.overview}</p>
+      <p>{selectedMovie.genres}</p>
+      <p>${selectedMovie.budget}</p> 
+      <p>${selectedMovie.revenue}</p> 
+      <p>{selectedMovie.runtime} minutes</p> 
+      <p>{selectedMovie.tagline}</p> 
     </>
   )
 }
-
-// overview, genres, budget, revenue, runtime, tagline
 
 export default MovieDetails;
