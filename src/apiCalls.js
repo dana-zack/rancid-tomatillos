@@ -1,5 +1,7 @@
+const url = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+
 async function fetchMovies() {
-    const response = await fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    const response = await fetch(`${url}`)
     if(!response.ok) {
       throw new Error('Sorry, try again in a moment.')
     }
@@ -7,14 +9,23 @@ async function fetchMovies() {
 }
 
 async function fetchSingleMovie(id) {
-  const response = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+  const response = await fetch(`${url}/${id}`)
   if(!response.ok) {
     throw new Error('Sorry, try again in a moment.')
   }
   return await response.json();
 }
 
+async function fetchSingleMovieVids(id) {
+  const response = await fetch(`${url}/${id}/videos`)
+  if(!response.ok) {
+    throw new Error('Failed to fetch trailer.')
+  }
+  return await response.json();
+}
+
 export {
   fetchMovies,
-  fetchSingleMovie
+  fetchSingleMovie,
+  fetchSingleMovieVids
 }

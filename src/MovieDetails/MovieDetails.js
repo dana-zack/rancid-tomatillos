@@ -1,8 +1,14 @@
 import './MovieDetails.css'
+import YouTube from 'react-youtube';
 
-function MovieDetails({selectedMovie}) {
+function MovieDetails({selectedMovie, selectedMovieVids}) {
 
-  console.log(selectedMovie)
+  const accessTrailer = () => {
+      if (selectedMovieVids.length) {
+        const trailer = selectedMovieVids.find(movie => movie.type === 'Trailer').key
+        return trailer
+      }
+  }
   
   return (
     <>
@@ -16,7 +22,8 @@ function MovieDetails({selectedMovie}) {
       <p>${selectedMovie.budget}</p> 
       <p>${selectedMovie.revenue}</p> 
       <p>{selectedMovie.runtime} minutes</p> 
-      <p>{selectedMovie.tagline}</p> 
+      <p>{selectedMovie.tagline}</p>
+      {accessTrailer() && <YouTube videoId={accessTrailer()}></YouTube>}
     </>
   )
 }
