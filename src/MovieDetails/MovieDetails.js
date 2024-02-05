@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 function MovieDetails({selectedMovie, selectedMovieVids}) {
 
   const accessTrailer = () => {
-      if (selectedMovieVids.length) {
+      if (typeof selectedMovieVids === 'string' || !selectedMovieVids) {
+        // return selectedMovieVids
+      } else {
         const trailer = selectedMovieVids.find(movie => movie.type === 'Trailer').key
         return trailer
       }
@@ -32,7 +34,11 @@ function MovieDetails({selectedMovie, selectedMovieVids}) {
         </div>
         <p className="overview">{selectedMovie.overview}</p>
       </article>
-      {accessTrailer() && <YouTube className='media' videoId={accessTrailer()}></YouTube>}
+      {
+      accessTrailer() ? 
+      <YouTube className='media' videoId={accessTrailer()}></YouTube> : 
+      <p className="media">Unable to play trailer</p>
+      }
     </section>
   )
 }

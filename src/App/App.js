@@ -36,7 +36,7 @@ function App() {
         const trailers = await fetchSingleMovieVids(id);
         setSelectedMovieVids( trailers.videos );
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
     getSingleMovieVids();    

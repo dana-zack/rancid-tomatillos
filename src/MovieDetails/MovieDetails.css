@@ -71,4 +71,5 @@
 .media {
   grid-area: media;
   justify-self: center;
+  margin: 0 0 100px;
 }
