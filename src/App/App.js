@@ -25,7 +25,6 @@ function App() {
   function selectMovie(id) {
     const getSingleMovie = async () => {
       try {
-        // const trailers = await fetchSingleMovieTrailer(id);
         const details = await fetchSingleMovie(id);
         setSelectedMovie( details.movie );
       } catch (error) {
@@ -40,8 +39,8 @@ function App() {
         console.log(error);
       }
     }
-    getSingleMovie();
     getSingleMovieVids();    
+    getSingleMovie();
   }
   
   return (
