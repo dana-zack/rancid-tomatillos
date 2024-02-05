@@ -1,12 +1,13 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { fetchMovies, fetchSingleMovie } from '../apiCalls.js'
+import { fetchMovies, fetchSingleMovie, fetchSingleMovieVids } from '../apiCalls.js'
 import Movies from '../Movies/Movies.js'
 import MovieDetails from '../MovieDetails/MovieDetails.js'
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedMovieVids, setSelectedMovieVids] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -24,13 +25,22 @@ function App() {
   function selectMovie(id) {
     const getSingleMovie = async () => {
       try {
-        const selectedMovie = await fetchSingleMovie(id);
-        setSelectedMovie(selectedMovie.movie);
+        const details = await fetchSingleMovie(id);
+        setSelectedMovie( details.movie );
       } catch (error) {
         setError(error)
       }
     }
-    getSingleMovie();    
+    const getSingleMovieVids = async () => {
+      try {
+        const trailers = await fetchSingleMovieVids(id);
+        setSelectedMovieVids( trailers.videos );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getSingleMovieVids();    
+    getSingleMovie();
   }
   
   return (
@@ -40,7 +50,7 @@ function App() {
       { error && <p>Sorry, come back later!</p> }
       { 
       selectedMovie ? 
-      <MovieDetails selectedMovie={ selectedMovie } /> : 
+      <MovieDetails selectedMovie={ selectedMovie } selectedMovieVids={selectedMovieVids} /> : 
       <Movies movies={movies} selectMovie={ selectMovie }/> 
       }
       
