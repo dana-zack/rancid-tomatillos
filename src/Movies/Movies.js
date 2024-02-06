@@ -2,7 +2,7 @@ import MovieCard from '../MovieCard/MovieCard'
 import './Movies.css'
 import PropTypes from 'prop-types';
 
-function Movies({ movies, selectMovie }){
+function Movies({ movies, selectMovie, error }){
 
   const movieCards = movies.map(movie => {
     return (
@@ -20,7 +20,7 @@ function Movies({ movies, selectMovie }){
 
   return (
     <section className="movie-cards-container">
-      { movieCards }
+      { error ? <p>{error.message}</p> : movieCards }
     </section>
   )
 }
