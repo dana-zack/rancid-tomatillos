@@ -36,7 +36,7 @@ function App() {
         const trailers = await fetchSingleMovieVids(id);
         setSelectedMovieVids( trailers.videos );
       } catch (error) {
-        console.log(error)
+        setError(error)
       }
     }
     getSingleMovieVids();    
@@ -46,14 +46,15 @@ function App() {
   return (
     <main className="App">
       <h1>Rancid Tomatillos</h1>
-      <button className="home-button" onClick={() => setSelectedMovie(null)}>Home</button>
-      { error && <p>Sorry, come back later!</p> }
+      <button className="home-button" onClick={() => {
+        setSelectedMovie(null);
+        setError('');
+      }}>Home</button>
       { 
       selectedMovie ? 
-      <MovieDetails selectedMovie={ selectedMovie } selectedMovieVids={selectedMovieVids} /> : 
-      <Movies movies={movies} selectMovie={ selectMovie }/> 
+      <MovieDetails selectedMovie={selectedMovie} selectedMovieVids={selectedMovieVids} error={error}/> : 
+      <Movies movies={movies} selectMovie={selectMovie} error={error}/> 
       }
-      
     </main>
   );
 }

@@ -19,7 +19,7 @@ async function fetchSingleMovie(id) {
 async function fetchSingleMovieVids(id) {
   const response = await fetch(`${url}/${id}/videos`)
   if(!response.ok) {
-    throw new Error('Failed to fetch trailer.')
+    throw new Error('Sorry, failed to load media!')
   }
   return await response.json();
 }

@@ -2,11 +2,10 @@ import './MovieDetails.css'
 import YouTube from 'react-youtube';
 import PropTypes from 'prop-types';
 
-function MovieDetails({selectedMovie, selectedMovieVids}) {
+function MovieDetails({selectedMovie, selectedMovieVids, error}) {
 
   const accessTrailer = () => {
       if (typeof selectedMovieVids === 'string' || !selectedMovieVids) {
-        // return selectedMovieVids
       } else {
         const trailer = selectedMovieVids.find(movie => movie.type === 'Trailer').key
         return trailer
@@ -30,14 +29,14 @@ function MovieDetails({selectedMovie, selectedMovieVids}) {
           <p>Runtime: {selectedMovie.runtime} minutes</p> 
           <p>{selectedMovie.genres.join(' | ')}</p>
           <p>Release date: {selectedMovie.release_date}</p>
-          <p>Movie Rating: {selectedMovie.average_rating} ⭐️'s</p>
+          <p>Movie Rating: {selectedMovie.average_rating} / 10</p>
         </div>
         <p className="overview">{selectedMovie.overview}</p>
       </article>
       {
       accessTrailer() ? 
       <YouTube className='media' videoId={accessTrailer()}></YouTube> : 
-      <p className="media">Unable to play trailer</p>
+      <p className="media">{error.message}</p>
       }
     </section>
   )

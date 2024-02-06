@@ -1,0 +1,25 @@
+{
+  "videos": [
+    {
+      "id": 34,
+      "movie_id": 724495,
+      "key": "0Mu74OixF8k",
+      "site": "YouTube",
+      "type": "Behind the Scenes"
+    },
+    {
+      "id": 35,
+      "movie_id": 724495,
+      "key": "44pboZrnPTY",
+      "site": "YouTube",
+      "type": "Featurette"
+    },
+    {
+      "id": 36,
+      "movie_id": 724495,
+      "key": "3RDaPV_rJ1Y",
+      "site": "YouTube",
+      "type": "Trailer"
+    }
+  ]
+}
