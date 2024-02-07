@@ -1,8 +1,6 @@
 import './Home.css';
 
-function Home({setSelectedMovie}) {
-  setSelectedMovie(null)
-
+function Home() {
   return (
     <h1>Welcome home!</h1>
   )

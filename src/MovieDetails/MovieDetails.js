@@ -1,12 +1,48 @@
 import './MovieDetails.css'
 import YouTube from 'react-youtube';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import { fetchSingleMovie, fetchSingleMovieVids } from '../apiCalls.js';
 
-function MovieDetails({ selectedMovieVids, selectedMovie, error }) {
+function MovieDetails({ error, setError }) {
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedMovieVids, setSelectedMovieVids] = useState(null);
+  const id = useParams().id
+  
+  useEffect(() => {
+    
+    const getSingleMovie = async () => {
+      try {
+        const details = await fetchSingleMovie(id);
+        setSelectedMovie( details.movie );
+      } catch (error) {
+        setError(error)
+      }
+    }
+  
+    const getSingleMovieVids = async () => {
+      try {
+        const trailers = await fetchSingleMovieVids(id);
+        setSelectedMovieVids( trailers.videos );
+      } catch (error) {
+        setError(error)
+      }
+    }
+  
+    getSingleMovieVids();    
+    getSingleMovie();
+  }, [id, setError])
 
   const accessTrailer = () => {
-    if (typeof selectedMovieVids === 'string' || !selectedMovieVids) return;
+    if (typeof selectedMovieVids === 'string' || !selectedMovieVids || !selectedMovieVids.length) return;
     return selectedMovieVids.find(movie => movie.type === 'Trailer').key
+  }
+
+  if (!selectedMovie) {
+    return (
+      <p>{error.message}</p>
+    )
   }
 
   return (
@@ -33,7 +69,7 @@ function MovieDetails({ selectedMovieVids, selectedMovie, error }) {
       {
       accessTrailer() ? 
       <YouTube className='media' videoId={accessTrailer()}></YouTube> : 
-      <p className="media">{error.message}</p>
+      <p className="media">Sorry, failed to load media!</p>
       }
     </section>
   )
@@ -42,19 +78,6 @@ function MovieDetails({ selectedMovieVids, selectedMovie, error }) {
 export default MovieDetails;
 
 MovieDetails.propTypes = {
-  selectedMovie: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    poster_path: PropTypes.string,
-    backdrop_path: PropTypes.string,
-    release_date: PropTypes.string,
-    overview: PropTypes.string,
-    genres: PropTypes.arrayOf(PropTypes.string),
-    budget: PropTypes.number,
-    revenue: PropTypes.number,
-    runtime: PropTypes.number,
-    tagline: PropTypes.string,
-    average_rating: PropTypes.number
-  }),
-  selectedMovieVids: PropTypes.arrayOf(PropTypes.object),
+  error: PropTypes.object.isRequired,
+  setError: PropTypes.func.isRequired
 }

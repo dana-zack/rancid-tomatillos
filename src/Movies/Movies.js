@@ -2,8 +2,7 @@ import MovieCard from '../MovieCard/MovieCard'
 import './Movies.css'
 import PropTypes from 'prop-types';
 
-function Movies({ movies, selectMovie, setSelectedMovie }){
-  setSelectedMovie(null)
+function Movies({ movies, error }){
 
   const movieCards = movies.map(movie => {
     return (
@@ -14,14 +13,13 @@ function Movies({ movies, selectMovie, setSelectedMovie }){
         releaseDate={movie.release_date}
         id={movie.id}
         key={movie.id}
-        selectMovie={selectMovie}
       />
     )
   })
 
   return (
     <section className="movie-cards-container">
-      { movieCards }
+      { !movies.length ? <p>{error.message}</p> : movieCards }
     </section>
   )
 }
@@ -30,5 +28,5 @@ export default Movies;
 
 Movies.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object),
-  selectMovie: PropTypes.func.isRequired
+  error: PropTypes.object.isRequired
 }
