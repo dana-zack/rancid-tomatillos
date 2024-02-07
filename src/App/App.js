@@ -1,14 +1,17 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { fetchMovies, fetchSingleMovie, fetchSingleMovieVids } from '../apiCalls.js'
-import Movies from '../Movies/Movies.js'
-import MovieDetails from '../MovieDetails/MovieDetails.js'
+import { fetchMovies, fetchSingleMovie, fetchSingleMovieVids } from '../apiCalls.js';
+import Movies from '../Movies/Movies.js';
+import MovieDetails from '../MovieDetails/MovieDetails.js';
+import Home from '../Home/Home'
+import NotFound from '../NotFound/NotFound'
+import { Routes, Route, NavLink } from 'react-router-dom'
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState('');
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedMovieVids, setSelectedMovieVids] = useState(null);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const getMovies = async () => {
@@ -23,6 +26,7 @@ function App() {
   }, [])
 
   function selectMovie(id) {
+    setSelectedMovieVids('null')
     const getSingleMovie = async () => {
       try {
         const details = await fetchSingleMovie(id);
@@ -42,19 +46,31 @@ function App() {
     getSingleMovieVids();    
     getSingleMovie();
   }
-  
+
   return (
     <main className="App">
       <h1>Rancid Tomatillos</h1>
-      <button className="home-button" onClick={() => {
-        setSelectedMovie(null);
-        setError('');
-      }}>Home</button>
-      { 
-      selectedMovie ? 
-      <MovieDetails selectedMovie={selectedMovie} selectedMovieVids={selectedMovieVids} error={error}/> : 
-      <Movies movies={movies} selectMovie={selectMovie} error={error}/> 
-      }
+      <nav>
+        <NavLink to='/home' id="nav-home" className='nav'>Home</NavLink>
+        <NavLink to='/movies' id="nav-movies" className='nav'>All Movies</NavLink>
+      </nav>
+      <Routes>
+        <Route path='/home' element={ <Home setSelectedMovie={setSelectedMovie} /> } />
+        <Route path='/movies' element={ movies.length ?
+          <Movies 
+            setSelectedMovie={setSelectedMovie} 
+            selectMovie={selectMovie} 
+            movies={movies} error={error} 
+          /> :
+          <NotFound error={error}/> } />
+        <Route path='/movies/:id' element={selectedMovie ? 
+          <MovieDetails 
+            selectedMovie={selectedMovie} 
+            selectedMovieVids={selectedMovieVids} 
+            error={error} 
+          /> : 
+          <NotFound error={error}/> } />
+      </Routes>
     </main>
   );
 }
