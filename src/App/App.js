@@ -51,12 +51,12 @@ function App() {
     <main className="App">
       <h1>Rancid Tomatillos</h1>
       <nav>
-        <NavLink to='/home' className='nav'>Home</NavLink>
-        <NavLink to='/movies' className='nav'>All Movies</NavLink>
+        <NavLink to='/home' id="nav-home" className='nav'>Home</NavLink>
+        <NavLink to='/movies' id="nav-movies" className='nav'>All Movies</NavLink>
       </nav>
       <Routes>
         <Route path='/home' element={ <Home setSelectedMovie={setSelectedMovie} /> } />
-        <Route path='/movies' element={ movies ?
+        <Route path='/movies' element={ movies.length ?
           <Movies 
             setSelectedMovie={setSelectedMovie} 
             selectMovie={selectMovie} 

@@ -1,4 +1,4 @@
-const url = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+const url = 'https://rancid-tomatillos.herokuapp.com/api/v2/movis'
 
 async function fetchMovies() {
     const response = await fetch(`${url}`)
