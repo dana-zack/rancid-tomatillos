@@ -1,9 +1,9 @@
-.home-button {
-  margin: 0 0 20px;
-  width: 100px;
-  border: none; 
+.nav {
+  margin: 10px;
+  border: solid 2px white;
+  background-color: white;
 }
 
-.home-button:hover {
+.nav-hover {
   cursor: pointer;
 }

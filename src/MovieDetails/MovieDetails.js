@@ -2,14 +2,11 @@ import './MovieDetails.css'
 import YouTube from 'react-youtube';
 import PropTypes from 'prop-types';
 
-function MovieDetails({selectedMovie, selectedMovieVids, error}) {
+function MovieDetails({ selectedMovieVids, selectedMovie, error }) {
 
   const accessTrailer = () => {
-      if (typeof selectedMovieVids === 'string' || !selectedMovieVids) {
-      } else {
-        const trailer = selectedMovieVids.find(movie => movie.type === 'Trailer').key
-        return trailer
-      }
+    if (typeof selectedMovieVids === 'string' || !selectedMovieVids) return;
+    return selectedMovieVids.find(movie => movie.type === 'Trailer').key
   }
 
   return (
