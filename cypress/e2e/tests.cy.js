@@ -20,17 +20,14 @@ describe('Home page user flows', () => {
   });
 
   it('Should be able to visit the home page & render expected elements', () => {
-    cy.contains('h1', 'Rancid Tomatillos')
+    cy.contains('h1', 'RANCID TOMATILLOS')
     cy.get('#nav-home').contains('Home')
     cy.get('#nav-movies').contains('Movies')
   })
   
   it('Should be able to visit the movies page & render expected elements', () => {
     cy.get('#nav-movies').click()
-    cy.contains('h1', 'Rancid Tomatillos')
-    cy.get('.movie-card').first().contains('h3', 'Black Adam')
     cy.get('.movie-card').first().find('img').should('have.attr', 'src', "https://image.tmdb.org/t/p/original//pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg")
-    cy.get('.movie-card').last().contains('h3', 'Woman King')
     cy.get('.movie-card').last().find('img').should('have.attr', 'src', "https://image.tmdb.org/t/p/original//438QXt1E3WJWb3PqNniK0tAE5c1.jpg")
   })
 

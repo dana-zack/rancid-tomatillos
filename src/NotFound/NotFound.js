@@ -1,8 +1,8 @@
 import './NotFound.css';
 
-function NotFound({ error }) {
+function NotFound() {
   return (
-    <p classList="error-text">{error.message}</p>
+    <p classList="error-text">Page Not Found</p>
   )
 }
 
