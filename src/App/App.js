@@ -9,7 +9,7 @@ import { Routes, Route, NavLink } from 'react-router-dom'
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState({});
 
   useEffect(() => {
     const getMovies = async () => {

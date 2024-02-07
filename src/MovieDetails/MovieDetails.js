@@ -1,6 +1,6 @@
 import './MovieDetails.css'
 import YouTube from 'react-youtube';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { fetchSingleMovie, fetchSingleMovieVids } from '../apiCalls.js';
@@ -77,20 +77,7 @@ function MovieDetails({ error, setError }) {
 
 export default MovieDetails;
 
-// MovieDetails.propTypes = {
-//   selectedMovie: PropTypes.shape({
-//     id: PropTypes.number,
-//     title: PropTypes.string,
-//     poster_path: PropTypes.string,
-//     backdrop_path: PropTypes.string,
-//     release_date: PropTypes.string,
-//     overview: PropTypes.string,
-//     genres: PropTypes.arrayOf(PropTypes.string),
-//     budget: PropTypes.number,
-//     revenue: PropTypes.number,
-//     runtime: PropTypes.number,
-//     tagline: PropTypes.string,
-//     average_rating: PropTypes.number
-//   }),
-//   selectedMovieVids: PropTypes.arrayOf(PropTypes.object),
-// }
+MovieDetails.propTypes = {
+  error: PropTypes.object.isRequired,
+  setError: PropTypes.func.isRequired
+}

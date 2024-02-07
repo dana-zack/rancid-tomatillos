@@ -26,7 +26,7 @@ function Movies({ movies, error }){
 
 export default Movies;
 
-// Movies.propTypes = {
-//   movies: PropTypes.arrayOf(PropTypes.object),
-//   selectMovie: PropTypes.func.isRequired
-// }
+Movies.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object),
+  error: PropTypes.object.isRequired
+}
