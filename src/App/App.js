@@ -49,11 +49,13 @@ function App() {
 
   return (
     <main className="App">
-      <h1>Rancid Tomatillos</h1>
-      <nav>
-        <NavLink to='/home' id="nav-home" className='nav'>Home</NavLink>
-        <NavLink to='/movies' id="nav-movies" className='nav'>All Movies</NavLink>
-      </nav>
+      <header>
+        <h1>RANCID TOMATILLOS</h1>
+        <nav>
+          <NavLink to='/home' id="nav-home" className='nav'>Home</NavLink>
+          <NavLink to='/movies' id="nav-movies" className='nav'>All Movies</NavLink>
+        </nav>
+      </header>
       <Routes>
         <Route path='/home' element={ <Home setSelectedMovie={setSelectedMovie} /> } />
         <Route path='/movies' element={ movies.length ?
@@ -71,6 +73,7 @@ function App() {
           /> : 
           <NotFound error={error}/> } />
       </Routes>
+      <footer></footer>
     </main>
   );
 }

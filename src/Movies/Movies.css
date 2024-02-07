@@ -1,5 +1,15 @@
 .movie-cards-container {
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(5, 1fr) ;
-  grid-gap: 70px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 210px);
+  grid-gap: 60px;
+  margin-top: 50px;
+}
+
+.recipe-card-section{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
 }

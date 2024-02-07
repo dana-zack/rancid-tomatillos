@@ -2,7 +2,7 @@ import './NotFound.css';
 
 function NotFound({ error }) {
   return (
-    <p>{error.message}</p>
+    <p classList="error-text">{error.message}</p>
   )
 }
 
