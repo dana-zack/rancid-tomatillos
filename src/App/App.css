@@ -1,9 +1,36 @@
+.App {
+  box-sizing: border-box;
+  padding: 0 30px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 80px;
+  letter-spacing: 0.03em;
+  margin: 10px 0;
+}
+
 .nav {
+  text-decoration: none;
   margin: 10px;
-  border: solid 2px white;
+  border: none;
+  border-radius: 5px;
   background-color: white;
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 8px;
 }
 
 .nav-hover {
   cursor: pointer;
+}
+
+footer {
+  height: 200px;
 }
