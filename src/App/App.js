@@ -33,7 +33,7 @@ function App() {
         </nav>
       </header>
       <Routes>
-        <Route path='/home' element={ <Home /> } />
+        <Route path='/home' element={ <Home movies={movies}/> } />
         <Route path='/movies' element={<Movies movies={movies} error={error} />} />
         <Route path='/movies/:id' element={ <MovieDetails error={error} setError={setError}/> } />
         <Route path='*' element={<NotFound />} />
