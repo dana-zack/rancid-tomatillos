@@ -1,6 +1,7 @@
 import './MoviePicker.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 function MoviePicker({ movies, error }) {
   const [pickedMovie, setPickedMovie] = useState(null)
@@ -12,11 +13,12 @@ function MoviePicker({ movies, error }) {
       <h3 className='decide-title'>Can't decide what to watch?</h3>
       <button className='picker-button' onClick={() => setPickedMovie(randomMovie)}>Let us pick!</button>
       { pickedMovie ? 
-        <article  className='movie-card picked-movie'>
-          <img src={pickedMovie.poster_path} alt='Movie Poster'/>
-        </article> :
-        <p>{error}</p>
-      }
+        <Link className='card' to={`/movies/${pickedMovie.id}`} >
+          <article  className='movie-card picked-movie'>
+            <img src={pickedMovie.poster_path} alt='Movie Poster'/>
+          </article> 
+        </Link> :
+        <p>{error}</p> }
     </section>
   )
 }

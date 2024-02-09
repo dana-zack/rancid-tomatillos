@@ -42,13 +42,13 @@
   grid-area: info;
   display: flex;
   justify-content: space-around;
-  margin: 5% 10%;
+  margin: 7% 10%;
   font-size: 1.5rem;
 }
 
 .side-info {
   width: 30%;
-  padding: 2em 0;
+  padding: 1.8em 0;
 }
 
 .overview {
