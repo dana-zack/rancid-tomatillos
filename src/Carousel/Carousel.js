@@ -2,7 +2,6 @@ import './Carousel.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import PropTypes from 'prop-types';
 
 function Carousel() {
   const settings = {
@@ -18,7 +17,7 @@ function Carousel() {
   return (
     <section className="carousel-container">
       <Slider {...settings}>
-        <div className='carousel-element'>
+        <div className='carousel-element' id='first-el'>
           <h2>The Woman King</h2>
           <img src="https://image.tmdb.org/t/p/original//7zQJYV02yehWrQN6NjKsBorqUUS.jpg"></img>
         </div>
@@ -38,7 +37,7 @@ function Carousel() {
           <h2>Puss In Boots</h2>
           <img src="https://image.tmdb.org/t/p/original//cP8YNG3XUeBmO8Jk7Skzq3vwHy1.jpg"></img>
         </div>
-        <div className='carousel-element'>
+        <div className='carousel-element' id='last-el'>
           <h2>Smile</h2>
           <img src="https://image.tmdb.org/t/p/original//olPXihyFeeNvnaD6IOBltgIV1FU.jpg"></img>
         </div>

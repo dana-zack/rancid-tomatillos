@@ -19,7 +19,7 @@ function Movies({ movies, error }){
 
   return (
     <section className="movie-cards-container">
-      { !movies.length ? <p>{error.message}</p> : movieCards }
+      { !movies.length ? <p>{error}</p> : movieCards }
     </section>
   )
 }
@@ -28,5 +28,5 @@ export default Movies;
 
 Movies.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object),
-  error: PropTypes.object.isRequired
+  error: PropTypes.string.isRequired
 }

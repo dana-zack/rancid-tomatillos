@@ -11,13 +11,12 @@ function MovieDetails({ error, setError }) {
   const id = useParams().id
   
   useEffect(() => {
-    
     const getSingleMovie = async () => {
       try {
         const details = await fetchSingleMovie(id);
         setSelectedMovie( details.movie );
       } catch (error) {
-        setError(error)
+        setError(error.message)
       }
     }
   
@@ -26,7 +25,7 @@ function MovieDetails({ error, setError }) {
         const trailers = await fetchSingleMovieVids(id);
         setSelectedMovieVids( trailers.videos );
       } catch (error) {
-        setError(error)
+        setError(error.message)
       }
     }
   
@@ -41,7 +40,7 @@ function MovieDetails({ error, setError }) {
 
   if (!selectedMovie) {
     return (
-      <p>{error.message}</p>
+      <p>{error}</p>
     )
   }
 
@@ -69,7 +68,7 @@ function MovieDetails({ error, setError }) {
       {
       accessTrailer() ? 
       <YouTube className='media' videoId={accessTrailer()}></YouTube> : 
-      <p className="media">Sorry, failed to load media!</p>
+      <p className="media">{error}</p>
       }
     </section>
   )
@@ -78,6 +77,6 @@ function MovieDetails({ error, setError }) {
 export default MovieDetails;
 
 MovieDetails.propTypes = {
-  error: PropTypes.object.isRequired,
+  error: PropTypes.string.isRequired,
   setError: PropTypes.func.isRequired
 }
