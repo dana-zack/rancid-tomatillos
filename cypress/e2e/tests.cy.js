@@ -32,9 +32,12 @@ describe('Home page user flows', () => {
     cy.get('.picker-button').contains('Let us pick!')
   })
 
-  it('Should be able to visit the home page & pick a random movie', () => {
+  it('Should be able to visit the home page, pick a random movie, & view those movie details', () => {
     cy.get('.picker-button').click()
     cy.get('.picked-movie').find('img').should('have.attr', 'alt')
+    cy.get('.picked-movie').click()
+    cy.get('.movie-details-container').should('exist')
+    cy.get('.carousel-container').should("not.exist")
   })
   
   it('Should be able to visit the movies page & render expected elements', () => {
