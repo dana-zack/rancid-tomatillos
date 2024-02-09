@@ -1,0 +1,14 @@
+.carousel-element > img {
+  width: 100vw;
+}
+
+.carousel-element {
+  position: relative
+}
+
+.carousel-element > h2 {
+  position: absolute;
+  bottom: 0;
+  left: 2rem;
+  font-size: 5rem;
+}

@@ -32,7 +32,7 @@ function MovieDetails({ error, setError }) {
   
     getSingleMovieVids();    
     getSingleMovie();
-  }, [id, setError])
+  }, [])
 
   const accessTrailer = () => {
     if (typeof selectedMovieVids === 'string' || !selectedMovieVids || !selectedMovieVids.length) return;
