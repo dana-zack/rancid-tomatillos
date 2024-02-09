@@ -22,11 +22,11 @@ function Carousel() {
           <img src="https://image.tmdb.org/t/p/original//7zQJYV02yehWrQN6NjKsBorqUUS.jpg"></img>
         </div>
         <div className='carousel-element'>
-          <h2>Black Adam</h2>
-          <img src="https://image.tmdb.org/t/p/original//bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg"></img>
+          <h2>Fall</h2>
+          <img src="https://image.tmdb.org/t/p/original//1DBDwevWS8OhiT3wqqlW7KGPd6m.jpg"></img>
         </div>
         <div className='carousel-element'>
-          <h2>Black Panther, Wakanda Forever</h2>
+          <h2>Black Panther: Wakanda Forever</h2>
           <img src="https://image.tmdb.org/t/p/original//xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg"></img>
         </div>
         <div className='carousel-element'>

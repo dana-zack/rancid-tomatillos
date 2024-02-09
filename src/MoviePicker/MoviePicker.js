@@ -8,7 +8,7 @@ function MoviePicker({ movies, error }) {
   const randomMovie = movies[(Math.floor(Math.random() * movies.length))]
 
   return (
-    <>
+    <section className='movie-picker-container'>
       <h3 className='decide-title'>Can't decide what to watch?</h3>
       <button className='picker-button' onClick={() => setPickedMovie(randomMovie)}>Let us pick!</button>
       { pickedMovie ? 
@@ -17,7 +17,7 @@ function MoviePicker({ movies, error }) {
         </article> :
         <p>{error}</p>
       }
-    </>
+    </section>
   )
 }
 

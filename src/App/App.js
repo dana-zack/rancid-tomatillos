@@ -23,6 +23,10 @@ function App() {
     getMovies();
   }, [])
 
+  const toggle = (element) => {
+    element.className.toggle('hidden')
+  }
+
   return (
     <main className="App">
       <header>
