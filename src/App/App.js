@@ -9,7 +9,7 @@ import { Routes, Route, NavLink } from 'react-router-dom'
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState({});
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const getMovies = async () => {
@@ -17,7 +17,7 @@ function App() {
         const movieData = await fetchMovies();
         setMovies(movieData.movies);
       } catch (error) {
-        setError(error)
+        setError(error.message)
       }
     }
     getMovies();
@@ -33,7 +33,7 @@ function App() {
         </nav>
       </header>
       <Routes>
-        <Route path='/home' element={ <Home movies={movies}/> } />
+        <Route path='/home' element={ <Home movies={movies} error={error} /> } />
         <Route path='/movies' element={<Movies movies={movies} error={error} />} />
         <Route path='/movies/:id' element={ <MovieDetails error={error} setError={setError}/> } />
         <Route path='*' element={<NotFound />} />

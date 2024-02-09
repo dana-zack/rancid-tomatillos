@@ -3,11 +3,11 @@ import Carousel from '../Carousel/Carousel';
 import MoviePicker from '../MoviePicker/MoviePicker';
 import PropTypes from 'prop-types';
 
-function Home({ movies }) {
+function Home({ movies, error }) {
   return (
     <>
       <Carousel />
-      <MoviePicker movies={movies}/>
+      <MoviePicker movies={movies} error={error}/>
     </>
   )
 }
@@ -15,5 +15,6 @@ function Home({ movies }) {
 export default Home;
 
 Home.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object)
+  movies: PropTypes.arrayOf(PropTypes.object),
+  error: PropTypes.string.isRequired
 }
