@@ -3,8 +3,6 @@ import './Movies.css'
 import PropTypes from 'prop-types';
 
 function Movies({ movies, error }){
-
-
   const movieCards = movies.map(movie => {
     return (
       <MovieCard 

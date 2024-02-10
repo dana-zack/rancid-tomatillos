@@ -16,7 +16,7 @@ describe('Home page user flows', () => {
       statusCode: 200,
       fixture: "last-movie-media"
     })
-    .visit('http://localhost:3000/home')
+    .visit('http://localhost:3000/')
   });
 
   it('Should be able to visit the home page & render expected elements', () => {
@@ -71,7 +71,7 @@ describe('Home page user flows', () => {
     cy.get('#nav-movies').click()
     cy.get('.movie-card').first().click()
     cy.get('#nav-home').click()
-    cy.url().should('eq', 'http://localhost:3000/home')
+    cy.url().should('eq', 'http://localhost:3000/')
     cy.get('.carousel-container').should("exist")
     cy.get('.movie-details-container').should('not.exist')
     cy.get('.movie-cards-container').should("not.exist")
@@ -80,7 +80,7 @@ describe('Home page user flows', () => {
   it('Should be able to use the forward & backward navigation buttons to navigate forward & backward', () => {
     cy.get('#nav-movies').click()
     cy.go('back')
-    cy.url().should('eq', 'http://localhost:3000/home')
+    cy.url().should('eq', 'http://localhost:3000/')
     cy.go('forward')
     cy.url().should('eq', 'http://localhost:3000/movies')
   })

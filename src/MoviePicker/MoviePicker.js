@@ -1,12 +1,15 @@
 import './MoviePicker.css';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
 function MoviePicker({ movies, error }) {
   const [pickedMovie, setPickedMovie] = useState(null)
-  
   const randomMovie = movies[(Math.floor(Math.random() * movies.length))]
+
+  useEffect(() => {
+    setPickedMovie(randomMovie)
+  }, [movies])
 
   return (
     <section className='movie-picker-container'>
