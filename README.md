@@ -16,12 +16,12 @@ Project spec: https://frontend.turing.edu/projects/module-3/rancid-tomatillos-v3
 
 ### Preview of App:
 ##### 'Home' Page
-![image](./Screenshot4.png) 
-![image](./Screenshot3.png)
+![image](./Screenshots/Screenshot4.png) 
+![image](./Screenshots/Screenshot3.png)
 ##### 'Movie Details' Page
-![image](./Screenshot2.png)
+![image](./Screenshots/Screenshot2.png)
 ##### 'All Movies' Page
-![image](./Screenshot1.png)
+![image](./Screenshots/Screenshot1.png)
 
 ### Context:
 This was a paired project at Turing School of Software & Design. We completed the project in 35 hours. This was our first time implementing React, Router, and Cypress into a Javascript application.
