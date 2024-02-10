@@ -23,21 +23,17 @@ function App() {
     getMovies();
   }, [])
 
-  const toggle = (element) => {
-    element.className.toggle('hidden')
-  }
-
   return (
     <main className="App">
       <header>
         <h1>RANCID TOMATILLOS</h1>
         <nav>
-          <NavLink to='/home' id="nav-home" className='nav'>Home</NavLink>
+          <NavLink to='/' id="nav-home" className='nav'>Home</NavLink>
           <NavLink to='/movies' id="nav-movies" className='nav'>All Movies</NavLink>
         </nav>
       </header>
       <Routes>
-        <Route path='/home' element={ <Home movies={movies} error={error} /> } />
+        <Route path='/' element={ <Home movies={movies} error={error} /> } />
         <Route path='/movies' element={<Movies movies={movies} error={error} />} />
         <Route path='/movies/:id' element={ <MovieDetails error={error} setError={setError}/> } />
         <Route path='*' element={<NotFound />} />

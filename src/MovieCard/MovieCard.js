@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 
 function MovieCard({ poster, id }){
-
   return (
     <Link className='card' to={`/movies/${id}`} > 
       <article  className='movie-card'>
